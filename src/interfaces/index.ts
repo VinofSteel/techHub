@@ -9,6 +9,10 @@ export interface iUserProps {
     children: React.ReactNode;
 }
 
+export interface iTechProps {
+    children: React.ReactNode;
+}
+
 export interface iNavigateFunction {
   (
     to: To,
@@ -70,6 +74,15 @@ export interface iUserContext {
         bio: RequiredStringSchema<string | undefined, AnyObject>;
     }>>;
     registerSubmitFunction: (data: iRegisterFunction) => Promise<void>
+    identification: string;
+    setIdentification: React.Dispatch<React.SetStateAction<string>>;
+    loading: boolean;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>
+    loadingAlt: boolean;
+    setLoadingAlt: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export interface iTechContext {
     modalAdd: boolean;
     toggleModalAdd: () => void;
     techFormSchema: yup.ObjectSchema<Assign<ObjectShape, {
@@ -80,14 +93,10 @@ export interface iUserContext {
     techDelete: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => Promise<void>
     modalPatch: boolean;
     toggleModalPatch: () => void;
-    identification: string;
-    setIdentification: React.Dispatch<React.SetStateAction<string>>;
     techFormPatchSchema: yup.ObjectSchema<Assign<ObjectShape, {
         status: RequiredStringSchema<string | undefined, AnyObject>;
     }>>;
     techPut: (data: iTechPut) => Promise<void>;
-    loading: boolean;
-    loadingAlt: boolean;
 }
 
 export interface iTech {

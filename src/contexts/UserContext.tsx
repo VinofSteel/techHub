@@ -1,11 +1,9 @@
-import React from "react";
 import { createContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import * as yup from "yup"
-import { iLocation, iNavigateFunction, iUser, iUserProps, iUserContext, iUserEmpty, iLoginFunction, iLoginResponse, iRegisterFunction, iTechSubmitFunction, iTechPut } from "../interfaces";
+import { iLocation, iNavigateFunction, iUser, iUserProps, iUserContext, iUserEmpty, iLoginFunction, iLoginResponse, iRegisterFunction} from "../interfaces";
 import { api, iAxiosResponse, iAxiosError } from "../services/api";
-
 
 export const UserContext = createContext({} as iUserContext)
 
@@ -19,8 +17,6 @@ export const UserProvider = ({children}: iUserProps) => {
     const navigate: iNavigateFunction = useNavigate()
     const [user, setUser] = useState<iUser | iUserEmpty>({} as iUser | {} as iUserEmpty)
     const [identification, setIdentification] = useState<string>("")
-    const [modalAdd, setModalAdd] = useState<boolean>(false)
-    const [modalPatch, setModalPatch] = useState<boolean>(false)
     const [loading, setLoading] = useState<boolean>(true)
     const [loadingAlt, setLoadingAlt] = useState<boolean>(false)
 
@@ -110,76 +106,6 @@ export const UserProvider = ({children}: iUserProps) => {
             setLoadingAlt(false)
         }
     }
-
-    // Add tecnologia
-    const toggleModalAdd = () => {
-        setModalAdd(state => !state)
-    }
-
-    const techFormSchema = yup.object().shape({
-        title: yup.string().required("O campo nome é obrigatório!"),
-        status: yup.string().required("O campo selecionar status é obrigatório!")
-    })
-
-    const techSubmitFunction = async (data: iTechSubmitFunction) => {
-        setLoading(true)
-        try {
-            await api.post<void>("/users/techs", data)
-            toast.success("Tecnologia cadastrada com sucesso!", { theme: "dark" })
-            toggleModalAdd()
-        } catch (error) {
-            const err = error as iAxiosError
-            if (err.response?.data.message === "User Already have this technology created you can only update it") {
-                toast.error("Tecnologias não podem possuir o mesmo nome!", { theme: "dark" });
-            } else {
-                toast.error("Ops! Algo deu errado!", { theme: "dark" })
-            }
-        } finally {
-            setLoading(false)
-        }
-    }
-    
-    // Patch tecnologia
-    const toggleModalPatch = () => {
-        setModalPatch(state => !state)
-    }
-
-    const techFormPatchSchema = yup.object().shape({
-        status: yup.string().required("Selecione o novo status.")
-    })
-
-    const techPut = async (data: iTechPut) => {
-        setLoading(true)
-        try {
-            await api.put<void>(`/users/techs/${identification}`, data)
-            toast.success("Tecnologia alterada com sucesso!", { theme: "dark" })
-            toggleModalPatch()
-        } catch (error) {
-            const err = error as iAxiosError
-            console.error(err)
-            toast.error("Ops! Algo deu errado! Tente novamente mais tarde.", { theme: "dark" })
-            toggleModalPatch()
-        } finally {
-            setLoading(false)
-        }
-    }
-
-    // Delete tecnologia
-    const techDelete = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        event.preventDefault()
-        setLoading(true)
-        try {
-            await api.delete<void>(`/users/techs/${identification}`)
-            toast.success("Tecnologia deletada!", { theme: "dark" })
-            toggleModalPatch()
-        } catch (error) {
-            const err = error as iAxiosError
-            console.error(err)
-            toast.error("Ops! Algo deu errado!", { theme: "dark" })
-        } finally {
-            setLoading(false)
-        }
-    }
     
     return (
         <UserContext.Provider value=
@@ -193,19 +119,12 @@ export const UserProvider = ({children}: iUserProps) => {
              loginSubmitFunction,
              registerFormSchema,
              registerSubmitFunction,
-             modalAdd,
-             toggleModalAdd,
-             techFormSchema,
-             techSubmitFunction,
-             techDelete,
-             modalPatch,
-             toggleModalPatch,
              identification,
              setIdentification,
-             techFormPatchSchema,
-             techPut,
              loading,
-             loadingAlt
+             setLoading,
+             loadingAlt,
+             setLoadingAlt
              }
             }>
             {children}

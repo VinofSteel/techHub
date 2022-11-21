@@ -1,12 +1,12 @@
 import React, { useContext } from "react"
 import { useForm } from "react-hook-form"
-import { UserContext } from "../../../contexts/UserContext"
 import { ButtonPrimary } from "../../../styles/components/Buttons"
 import { FormBackground } from "../../../styles/components/FormBackground"
 import { Input } from "../../../styles/components/Input"
 import { InputBox } from "../../../styles/components/InputBox"
 import { FormTechForm, FormTechHeader } from "../../../styles/components/FormTech/style"
 import { yupResolver } from "@hookform/resolvers/yup"
+import { TechContext } from "../../../contexts/TechContext"
 
 interface iTech {
     status: string;
@@ -14,7 +14,7 @@ interface iTech {
 }
 
 export const FormTech = () => {
-    const { toggleModalAdd, techSubmitFunction, techFormSchema } = useContext(UserContext)
+    const { toggleModalAdd, techSubmitFunction, techFormSchema } = useContext(TechContext)
     const { register, handleSubmit, formState:{errors} } = useForm<iTech>({
         resolver: yupResolver(techFormSchema)
     });

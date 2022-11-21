@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup"
 import React, { useContext } from "react"
 import { useForm } from "react-hook-form"
-import { UserContext } from "../../../contexts/UserContext"
+import { TechContext } from "../../../contexts/TechContext"
 import { ButtonDisable, ButtonNegative } from "../../../styles/components/Buttons"
 import { FormBackground } from "../../../styles/components/FormBackground"
 import { FormTechForm, FormTechHeader } from "../../../styles/components/FormTech/style"
@@ -26,7 +26,7 @@ interface iTech {
 
 export const FormTechPatch = ({element}: iTech) => {
 
-    const {toggleModalPatch, techFormPatchSchema, techPut, techDelete} = useContext(UserContext)
+    const {toggleModalPatch, techFormPatchSchema, techPut, techDelete} = useContext(TechContext)
 
     const { register, handleSubmit, formState:{errors} } = useForm<iTechPut>({
         resolver: yupResolver(techFormPatchSchema)

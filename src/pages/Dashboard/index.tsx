@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import { useContext } from "react"
 import { UserContext } from "../../contexts/UserContext"
 import { ButtonDark } from "../../styles/components/Buttons"
 import { DashNav, DashContainer, DashHeader, DashHeaderDiv, DashBorder, DashAddTech, DashTechList, DashTechListCard } from "./style"
@@ -8,9 +8,11 @@ import { ModalAdd } from "../../components/ModalAdd"
 import { ModalPatch } from "../../components/ModalPatch"
 import { FormTechPatch } from "./FormTechPatch"
 import { ModalLoading } from "../../components/ModalLoading"
+import { TechContext } from "../../contexts/TechContext"
 
 export const Dashboard = () => {
-    const {navigate, user, setUser, toggleModalAdd, toggleModalPatch, identification, setIdentification} = useContext(UserContext)
+    const {navigate, user, setUser, identification, setIdentification} = useContext(UserContext)
+    const {toggleModalAdd, toggleModalPatch} = useContext(TechContext)
 
     return (
         <DashContainer>

@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { UserContext } from "../../contexts/UserContext"
+import { TechContext } from "../../contexts/TechContext";
 import { StyledModal } from "../../styles/components/ModalStyle/style"
 
 interface iModalProps {
@@ -9,7 +9,7 @@ interface iModalProps {
 export const ModalPatch = ({children}: iModalProps) => {
 
 
-    const { modalPatch } = useContext(UserContext)
+    const { modalPatch } = useContext(TechContext)
 
     return (
         <>
