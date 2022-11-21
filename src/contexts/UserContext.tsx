@@ -1,150 +1,19 @@
-import React, { Key } from "react";
+import React from "react";
 import { createContext, useEffect, useState } from "react";
-import { Path, RelativeRoutingType, To, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import * as yup from "yup"
-import { AnyObject, Assign, ObjectShape } from "yup/lib/object";
-import { RequiredStringSchema } from "yup/lib/string";
+import { iLocation, iNavigateFunction, iUser, iUserProps, iUserContext, iUserEmpty, iLoginFunction, iLoginResponse, iRegisterFunction, iTechSubmitFunction, iTechPut } from "../interfaces";
 import { api, iAxiosResponse, iAxiosError } from "../services/api";
 
-// Interfaces e Types
-interface iUserProps {
-    children: React.ReactNode;
-}
 
-interface iNavigateFunction {
-  (
-    to: To,
-    options?: {
-      replace?: boolean;
-      state?: any;
-      relative?: RelativeRoutingType;
-    }
-  ): void;
-  (delta: number): void;
-}
-
-interface iLocation extends Path {
-    state: unknown;
-    key: Key;
-  }
-
-interface iLoginFunction {
-    email: string;
-    password: string;
-}
-
-interface iRegisterFunction {
-    email: string;
-    password?: string;
-    confirm_password?: string;
-    name: string;
-    bio: string;
-    contact: string;
-    course_module: string;
-}
-
-interface iTechPut {
-    status: string
-}
-
-interface iTechSubmitFunction extends iTechPut {
-    title: string
-}
-
-interface iUserContext {
-    id: string | null;
-    token: string | null;
-    navigate: iNavigateFunction;
-    user: iUserEmpty;
-    setUser: React.Dispatch<React.SetStateAction<iUser | iUserEmpty>>
-    loginFormSchema: yup.ObjectSchema<Assign<ObjectShape, {
-        email: RequiredStringSchema<string | undefined, AnyObject>;
-        password: RequiredStringSchema<string | undefined, AnyObject>;
-    }>>;
-    loginSubmitFunction: (data: iLoginFunction) => Promise<void>;
-    registerFormSchema: yup.ObjectSchema<Assign<ObjectShape, {
-        name: RequiredStringSchema<string | undefined, AnyObject>;
-        email: RequiredStringSchema<string | undefined, AnyObject>;
-        password?: RequiredStringSchema<string | undefined, AnyObject>;
-        confirm_password?: RequiredStringSchema<string | undefined, AnyObject>;
-        course_module: RequiredStringSchema<string | undefined, AnyObject>;
-        contact: RequiredStringSchema<string | undefined, AnyObject>;
-        bio: RequiredStringSchema<string | undefined, AnyObject>;
-    }>>;
-    registerSubmitFunction: (data: iRegisterFunction) => Promise<void>
-    modalAdd: boolean;
-    toggleModalAdd: () => void;
-    techFormSchema: yup.ObjectSchema<Assign<ObjectShape, {
-        title: RequiredStringSchema<string | undefined, AnyObject>;
-        status: RequiredStringSchema<string | undefined, AnyObject>;
-    }>>;
-    techSubmitFunction: (data: iTechSubmitFunction) => Promise<void>;
-    techDelete: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => Promise<void>
-    modalPatch: boolean;
-    toggleModalPatch: () => void;
-    identification: string;
-    setIdentification: React.Dispatch<React.SetStateAction<string>>;
-    techFormPatchSchema: yup.ObjectSchema<Assign<ObjectShape, {
-        status: RequiredStringSchema<string | undefined, AnyObject>;
-    }>>;
-    techPut: (data: iTechPut) => Promise<void>;
-    loading: boolean;
-    loadingAlt: boolean;
-}
-
-interface iTech {
-    id: string;
-    title: string;
-    status?: string;
-    created_at: string;
-    updated_at: string;
-}
-
-interface iWork extends iTech {
-    deploy_url: string;
-    description: string;
-}
-
-interface iUser extends iRegisterFunction {
-    id: string;
-    created_at: string;
-    updated_at: string;
-    avatar_url: string;
-    techs: iTech[];
-    works: iWork[];
-}
-
-interface iUserEmpty {
-    id?: string;
-    created_at?: string;
-    updated_at?: string;
-    avatar_url?: string;
-    techs?: iTech[];
-    works?: iWork[];
-    email?: string;
-    password?: string;
-    confirm_password?: string;
-    name?: string;
-    bio?: string;
-    contact?: string;
-    course_module?: string;
-}
-
-interface iLoginResponse {
-    user: iUser;
-    token: string;
-}
-
-
-// Context
 export const UserContext = createContext({} as iUserContext)
 
 export const UserProvider = ({children}: iUserProps) => {
     // Variáveis e hooks para autologin
     const id = localStorage.getItem("@kenziehub:id")
     const token = localStorage.getItem("@kenziehub:token")
-    const location: iLocation = useLocation()
+    const { pathname }: iLocation = useLocation()
     
     // Variáveis e hooks de uso geral
     const navigate: iNavigateFunction = useNavigate()
@@ -157,14 +26,10 @@ export const UserProvider = ({children}: iUserProps) => {
 
     // useEffect para autologin
     useEffect(() => {
-        async function loadUser () {
-            if (token) {
+        const loadUser = async () => {
                 try {
-                    if (location.pathname !== "/dashboard") {
-                        navigate("/dashboard")
-                    }
-                    const res: iAxiosResponse<iUser> = await api.get<iUser>(`/users/${id}`)
-                    setUser(res.data)
+                    const {data}: iAxiosResponse<iUser> = await api.get<iUser>(`/users/${id}`)
+                    setUser(data)
                 } catch (err: unknown) {
                     toast.error("Ops! Algo deu errado! Faça seu login novamente.", { theme: "dark" })
                     localStorage.clear()
@@ -172,13 +37,20 @@ export const UserProvider = ({children}: iUserProps) => {
                 } finally {
                     setLoading(false)
                 }
-            } else if (!token && location.pathname === "/dashboard") {
-                toast.error("Você não está autenticado. Faça seu login!", { theme: "dark" })
-                navigate("/")
-            }
         }
 
-        loadUser()
+        if (token && pathname !== "/dashboard") {
+            navigate("/dashboard")
+        }
+
+        if (!token && pathname === "/dashboard") {
+            toast.error("Você não está autenticado. Faça seu login!", { theme: "dark" })
+            navigate("/")
+        }
+
+        if (token && pathname === "/dashboard") {
+            loadUser()
+        }
     })
 
     // Login
@@ -219,7 +91,7 @@ export const UserProvider = ({children}: iUserProps) => {
         course_module: yup.string().required("O campo selecionar módulo é obrigatório."),
     })
 
-    async function registerSubmitFunction (data: iRegisterFunction) {
+    const registerSubmitFunction = async (data: iRegisterFunction) => {
         delete data.confirm_password
         setLoadingAlt(true)
 
@@ -249,7 +121,7 @@ export const UserProvider = ({children}: iUserProps) => {
         status: yup.string().required("O campo selecionar status é obrigatório!")
     })
 
-    async function techSubmitFunction (data: iTechSubmitFunction) {
+    const techSubmitFunction = async (data: iTechSubmitFunction) => {
         setLoading(true)
         try {
             await api.post<void>("/users/techs", data)
@@ -276,7 +148,7 @@ export const UserProvider = ({children}: iUserProps) => {
         status: yup.string().required("Selecione o novo status.")
     })
 
-    async function techPut (data: iTechPut) {
+    const techPut = async (data: iTechPut) => {
         setLoading(true)
         try {
             await api.put<void>(`/users/techs/${identification}`, data)
@@ -293,7 +165,7 @@ export const UserProvider = ({children}: iUserProps) => {
     }
 
     // Delete tecnologia
-    async function techDelete (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    const techDelete = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault()
         setLoading(true)
         try {
