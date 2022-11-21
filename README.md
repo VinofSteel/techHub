@@ -1,4 +1,4 @@
-# Versão em Português
+# Versão em Português:
 
 # Tech Hub
 
@@ -10,7 +10,7 @@ Essa aplicação foi feita como uma das entregas obrigatórias do curso Kenzie A
 ## A aplicação foi feita utilizando as tecnologias:
 
 ### React.js, Typescript
-#### react=router-dom, react-hook-form, resolvers, yup, react-spinners, styled-components, react-icons e react-toastify.
+#### react-router-dom, react-hook-form, resolvers, yup, react-spinners, styled-components, react-icons e react-toastify.
 
 # English Version:
 
@@ -24,4 +24,4 @@ This application was made following guidelines in the Web Development course by 
 ## This application was engineered using the techs:
 
 ### React.js, Typescript
-#### react=router-dom, react-hook-form, resolvers, yup, react-spinners, styled-components, react-icons and react-toastify.
+#### react-router-dom, react-hook-form, resolvers, yup, react-spinners, styled-components, react-icons and react-toastify.
