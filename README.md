@@ -18,12 +18,13 @@ A aplicação conta com sistemas de:
 * Mudança de rotas utilizando react-router-dom
 * Componente de carregamento para aguardar respostas da API utilizando react-spinners
 * Feedback interativo para resultados positivos ou negativos do consumo de API utilizando react-toastify
+* Gerenciamento de estado com ContextAPI
 * Proteção de rotas 
 * Autologin
 
 ## A aplicação foi feita utilizando as tecnologias:
 
-### React.js, Typescript
+### React.js, Typescript, ContextAPI
 #### axios, react-router-dom, react-hook-form, resolvers, yup, react-spinners, styled-components, react-icons e react-toastify.
 
 # English Version:
@@ -43,11 +44,12 @@ The applications has implementations for:
 * Route changing and selection using react-router-dom
 * Loading component for API responses using react-spinners
 * Interactive feedback for API responses using react-toastify
+* State management with ContextAPI
 * Route protection 
 * Autologin
 
 
 ## This application was engineered using the techs:
 
-### React.js, Typescript
+### React.js, Typescript, ContextAPI
 #### axios, react-router-dom, react-hook-form, resolvers, yup, react-spinners, styled-components, react-icons and react-toastify.
