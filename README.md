@@ -12,14 +12,14 @@ Essa aplicação foi feita como uma das entregas obrigatórias do curso Kenzie A
 
 A aplicação conta com sistemas de: 
 
-    * Cadastro com consumo de API REST utilizando Axios e validação de formulário utilizando yup
-    * Login com consumo de API REST utilizando Axios e utilização de token
-    * Registro, visualização, edição e deleção de dados consumidos de API REST utilizando Axios
-    * Mudança de rotas utilizando react-router-dom
-    * Componente de carregamento para aguardar respostas da API utilizando react-spinners
-    * Feedback interativo para resultados positivos ou negativos do consumo de API utilizando react-toastify
-    * Proteção de rotas 
-    * Autologin
+* Cadastro com consumo de API REST utilizando Axios e validação de formulário utilizando yup
+* Login com consumo de API REST utilizando Axios e utilização de token
+* Registro, visualização, edição e deleção de dados consumidos de API REST utilizando Axios
+* Mudança de rotas utilizando react-router-dom
+* Componente de carregamento para aguardar respostas da API utilizando react-spinners
+* Feedback interativo para resultados positivos ou negativos do consumo de API utilizando react-toastify
+* Proteção de rotas 
+* Autologin
 
 ## A aplicação foi feita utilizando as tecnologias:
 
@@ -37,14 +37,14 @@ This application was made following guidelines in the Web Development course by 
 
 The applications has implementations for:
 
-    * User registration with REST API data consumption using Axios, and form validation using yup
-    * User login with REST API data consumption using Axios and token validations
-    * Registration, visualization, editing and deletion of data consumed from the REST API utilizing Axios
-    * Route changing and selection using react-router-dom
-    * Loading component for API responses using react-spinners
-    * Interactive feedback for API responses using react-toastify
-    * Route protection 
-    * Autologin
+* User registration with REST API data consumption using Axios, and form validation using yup
+* User login with REST API data consumption using Axios and token validations
+* Registration, visualization, editing and deletion of data consumed from the REST API utilizing Axios
+* Route changing and selection using react-router-dom
+* Loading component for API responses using react-spinners
+* Interactive feedback for API responses using react-toastify
+* Route protection 
+* Autologin
 
 
 ## This application was engineered using the techs:
