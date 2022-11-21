@@ -34,7 +34,9 @@ export const TechProvider = ({ children }: iTechProps) => {
             if (err.response?.data.message === "User Already have this technology created you can only update it") {
                 toast.error("Tecnologias não podem possuir o mesmo nome!", { theme: "dark" });
             } else {
-                toast.error("Ops! Algo deu errado!", { theme: "dark" })
+                console.error(err)
+                alert("Algo deu errado nos servidores! Tente novamente!")
+                window.location.reload()
             }
         } finally {
             setLoading(false)
@@ -59,8 +61,8 @@ export const TechProvider = ({ children }: iTechProps) => {
         } catch (error) {
             const err = error as iAxiosError
             console.error(err)
-            toast.error("Ops! Algo deu errado! Tente novamente mais tarde.", { theme: "dark" })
-            toggleModalPatch()
+            alert("Algo deu errado nos servidores! Tente novamente!")
+            window.location.reload()
         } finally {
             setLoading(false)
         }
@@ -77,7 +79,8 @@ export const TechProvider = ({ children }: iTechProps) => {
         } catch (error) {
             const err = error as iAxiosError
             console.error(err)
-            toast.error("Ops! Algo deu errado!", { theme: "dark" })
+            alert("Algo deu errado nos servidores! Tente novamente!")
+            window.location.reload()
         } finally {
             setLoading(false)
         }

@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import { useContext } from "react"
 import { useForm } from "react-hook-form"
 import { ButtonPrimary } from "../../../styles/components/Buttons"
 import { FormBackground } from "../../../styles/components/FormBackground"

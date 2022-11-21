@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup"
-import React, { useContext } from "react"
+import { useContext } from "react"
 import { useForm } from "react-hook-form"
 import { TechContext } from "../../../contexts/TechContext"
 import { ButtonDisable, ButtonNegative } from "../../../styles/components/Buttons"

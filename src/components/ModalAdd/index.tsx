@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import { useContext } from "react"
 import { TechContext } from "../../contexts/TechContext";
 import { StyledModal } from "../../styles/components/ModalStyle/style"
 

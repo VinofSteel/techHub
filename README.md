@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# Versão em Português
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Tech Hub
 
-## Available Scripts
+Este projeto é um site criado com o propósito de permitir que devs tenham uma "central" (um hub) onde podem guardar suas tecnologias aprendidas e visualizá-las.
+O site funciona com um sistema de cadastro e login, que coloca o usuário em uma dashboard e permite a edição de suas tecnologias, e seu nível de conhecimento nas mesmas.
 
-In the project directory, you can run:
+Essa aplicação foi feita como uma das entregas obrigatórias do curso Kenzie Academy Brasil e usa sua REST API. O front-end foi feito por mim, utilizando meus conhecimentos mais atualizados do que quando a entrega foi originalmente feita.
 
-### `yarn start`
+## A aplicação foi feita utilizando as tecnologias:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### React.js, Typescript
+#### react=router-dom, react-hook-form, resolvers, yup, react-spinners, styled-components, react-icons e react-toastify.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# English Version:
 
-### `yarn test`
+# Tech Hub
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project is a website created with the purpose of allowing web devs to have a hub, where they can write down their learned (or in learning process) techs e visualize them.
+The website has a register and login system, allowing the user to access a dashboard in which he can see his current techs, edit them (name and learning level) and delete them.
 
-### `yarn build`
+This application was made following guidelines in the Web Development course by Kenzie Academy Brasil, and uses it's REST API. The front-end was done by me, with my current more updated skill level.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## This application was engineered using the techs:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### React.js, Typescript
+#### react=router-dom, react-hook-form, resolvers, yup, react-spinners, styled-components, react-icons and react-toastify.

@@ -7,7 +7,7 @@ import { StyledLoginForm, StyledLoginNavigate } from "./style";
 import { yupResolver } from "@hookform/resolvers/yup"
 import { Container } from "../../styles/components/Container";
 import { InputBox } from "../../styles/components/InputBox";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { ModalLoadingAlt } from "../../components/ModalLoadingAlt";
 

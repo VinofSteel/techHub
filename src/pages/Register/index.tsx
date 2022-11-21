@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { Input } from "../../styles/components/Input";
 import { StyledRegisterForm } from "./style";
 import { yupResolver } from "@hookform/resolvers/yup"
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { ModalLoadingAlt } from "../../components/ModalLoadingAlt";
 
