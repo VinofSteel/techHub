@@ -21,6 +21,9 @@ A aplicação conta com sistemas de:
 * Gerenciamento de estado com ContextAPI
 * Proteção de rotas 
 * Autologin
+* Design responsivo com media queries e mobile first
+* Controle de versionamento com Git
+* Deploy com Vercel
 
 ## A aplicação foi feita utilizando as tecnologias:
 
@@ -47,6 +50,9 @@ The applications has implementations for:
 * State management with ContextAPI
 * Route protection 
 * Autologin
+* Responsive design with media queries and mobile first
+* Version control with Git
+* Deploy with Vercel
 
 
 ## This application was engineered using the techs:
